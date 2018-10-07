@@ -1,0 +1,10 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react"
+    ],
+    "rules": {
+        "jsx-wrap-multiline": true,
+        "trailing-comma": true
+    }
+}
