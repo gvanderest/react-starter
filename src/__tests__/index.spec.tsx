@@ -1,6 +1,7 @@
 const ReactDOMMock = {
     render: jest.fn(),
 };
+jest.mock("../images/react.png", () => "../images/react.png");
 jest.mock("react-dom", () => (ReactDOMMock));
 
 import "../index";

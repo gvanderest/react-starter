@@ -4,6 +4,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const SOURCE_FOLDER = "src";
 const RELEASE_FOLDER = "release";
@@ -11,11 +12,15 @@ const STATIC_FOLDER = `${SOURCE_FOLDER}/static`;
 
 const SOURCE_PATH = `${__dirname}/${SOURCE_FOLDER}`;
 const RELEASE_PATH = `${__dirname}/${RELEASE_FOLDER}`;
+const STATIC_PATH = `${__dirname}/${STATIC_FOLDER}`;
 
 module.exports = (env, argv) => {
     const mode = argv.mode || "development";
 
     return {
+        devServer: {
+            historyApiFallback: true,
+        },
         devtool: "source-map",
         entry: [
             `${SOURCE_PATH}/index.tsx`,
@@ -48,6 +53,12 @@ module.exports = (env, argv) => {
         },
         output: { filename: "bundle.js", path: RELEASE_PATH },
         plugins: [
+            new CopyWebpackPlugin([
+                {
+                    from: STATIC_FOLDER,
+                    to: "static",
+                },
+            ]),
             mode === "development" ? new BundleAnalyzerPlugin({
                 openAnalyzer: false,
             }) : null,

@@ -7,6 +7,7 @@
 ### Programming
 * TypeScript
 * React
+* Redux
 
 ### Styling
 * LESS
@@ -23,7 +24,6 @@
 * Optimizing Images
 
 ## Next
-* Redux
 * Redux Thunk
 * Internationalization
 * Sentry.io integration

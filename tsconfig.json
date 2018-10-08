@@ -1,18 +1,22 @@
 {
     "compilerOptions": {
         "noImplicitAny": true,
-        "lib": ["esnext", "dom"],
+        "lib": [
+            "esnext",
+            "dom"
+        ],
         "target": "es5",
         "jsx": "react",
-        "module": "es6",
         "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
+        "esModuleInterop": true,
         "allowJs": true,
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "typeRoots": [
-            "./typings"
+            "./node_modules/@types/",
+            "./types"
         ]
     },
     "awesomeTypescriptLoaderOptions": {
