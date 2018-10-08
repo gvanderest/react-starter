@@ -1,6 +1,45 @@
 # React Starter
 
+Just a quick starter pack for working on projects.
+
 ## Workflow
+
+1. Checkout the code.
+
+    ```shell
+    git checkout git@github.com:gvanderest/react-starter.git <project-name>
+    ```
+
+2. Install the dependencies with your package manager of choice.
+
+    ```shell
+    $ yarn
+    # or use `npm install`
+    ```
+
+3. Start developing locally.
+
+    ```shell
+    yarn local
+    ```
+
+4. Run the unit tests or lint the code.
+
+    ```shell
+    yarn test
+    yarn lint
+    ```
+
+    Make sure that everything's running tip-top with Jest.
+
+5. Build a deployment.
+
+    ```shell
+    yarn release
+    ```
+
+    This will export production-ready code to the `release/` folder.
+
 
 ## Features
 
