@@ -2,9 +2,11 @@ import { Action } from "redux";
 import IMonster from "../types/IMonster";
 
 export const CREATE_MONSTER = "CREATE_MONSTER";
+export const DELETE_MONSTER = "DELETE_MONSTER";
 
 export const actions = {
     createMonster,
+    deleteMonster,
 };
 
 export interface IState {
@@ -12,7 +14,20 @@ export interface IState {
 }
 
 const initialState: IState = {
-    byId: {},
+    byId: {
+        "example-dwarf": {
+            id: "example-dwarf",
+            name: "a stout dwarf",
+        },
+        "example-elf": {
+            id: "example-elf",
+            name: "a slim elf",
+        },
+        "example-goblin": {
+            id: "example-goblin",
+            name: "a wiry goblin",
+        },
+    },
 };
 
 interface ICreateMonsterAction {
@@ -20,17 +35,29 @@ interface ICreateMonsterAction {
     monster: IMonster;
 }
 
-export function createMonster(name: string, race: string): ICreateMonsterAction {
+export function createMonster(name: string): ICreateMonsterAction {
     const id = String(Math.random());
     return {
         monster: {
             id,
             name,
-            race,
         },
         type: CREATE_MONSTER,
     };
 }
+
+interface IDeleteMonsterAction {
+    type: typeof DELETE_MONSTER;
+    id: string;
+}
+
+export function deleteMonster(id: string): IDeleteMonsterAction {
+    return {
+        id,
+        type: DELETE_MONSTER,
+    };
+}
+
 
 export default (state: IState = initialState, action: Action): IState => {
     switch (action.type) {
@@ -45,6 +72,17 @@ export default (state: IState = initialState, action: Action): IState => {
                     }
                 },
             };
+        }
+        case DELETE_MONSTER: {
+            const { id } = action as IDeleteMonsterAction;
+            const newState = {
+                ...state,
+                byId: {
+                    ...state.byId,
+                },
+            };
+            delete newState.byId[id];
+            return newState;
         }
         default: {
             return {
