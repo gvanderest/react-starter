@@ -6,6 +6,9 @@
     "rules": {
         "jsx-no-multiline-js": false,
         "jsx-wrap-multiline": true,
-        "trailing-comma": true
+        "trailing-comma": true,
+        "jsx-curly-spacing": "always",
+        "jsx-boolean-value": false,
+        "jsx-no-lambda": false
     }
 }
